@@ -1,11 +1,14 @@
-INTEGRAL : '∫';
+
+lexer grammar calculuslexer;
+
+INTEGRAL: '∫';
 DERIVADAP: '∂'; //parcial
 DIFERENCIAL: 'd';
 DERIVADAPRIMA: '\'';
 SEGUNDADERIVADA: 'd2';
 DT: 'dt'; //diferencial de t
 DX: 'dx'; 
-DDX: 'ddx' //operador segunda derivada
+DDX: 'ddx'; //operador segunda derivada
 SUMA: '+';
 RESTA: '-';
 MULTI: '*';
@@ -37,15 +40,15 @@ LOG: 'log';
 EXP: 'exp';
 SQRT: 'sqrt';
 ABS: 'abs';
+LIMIT: 'lim';
 
 PI: 'pi';
 ECONST: 'e';
 ARROW : '->';
 DIGIT: [0-9];
 NUMBER: DIGIT+ ('.' DIGIT+)? ([eE] [+-]? DIGIT+)?;
-ID: [a-zA-Z_] [a-zA-Z_0-9]*
-WS: [\t\r\n]+ -> skip;
+ID: [a-zA-Z_] [a-zA-Z_0-9]*;
+WS: [ \t\r\n]+ -> skip;
 COMENTARIO: '/*' .*? '*/' -> skip;
 LINEACOMENT: '//' ~[\r\n]* -> skip;
 
-expr: expr SUMA expr | NUMBER;

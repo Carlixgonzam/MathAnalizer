@@ -1,4 +1,4 @@
-parser grammar Calculusparser;
+parser grammar calculusparser;
 options {tokenVocab=calculuslexer;}
 prog: stat+ EOF;
 
@@ -7,6 +7,7 @@ stat: expr SEMICO | integralStmt SEMICO | differentialEq SEMICO | initCond SEMIC
 expr: expr SUMA term | expr RESTA term | term;
 term: term MULTI factor | term DIV factor| factor;
 factor: atom POTE factor | atom;
+
 atom: NUMBER 
     | ID 
     | SIN LPAREN expr RPAREN
@@ -32,4 +33,4 @@ differentialEq: DERIVADAPRIMA LPAREN ID RPAREN IGUAL expr
 partialEq: DERIVADAP ID DIV DERIVADAP ID IGUAL expr;
 initCond: ID LPAREN expr RPAREN (COLON | BARRA) expr;
 funcDef: ID LPAREN ID RPAREN IGUAL expr;
-limitStmt: 'lim' LBRACE ID ARROW expr RBRACE expr;
+limitStmt: LIMIT LBRACE ID ARROW expr RBRACE expr;
